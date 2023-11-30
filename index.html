@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="pagination">
+        <button class="btn1" onclick="backBtn()">
+          <img src="448-arrow.png" />prev
+        </button>
+        <ul>
+          <li class="link active" value="1" onclick="activeLink()">
+            <a href="#">1</a>
+          </li>
+          <li class="link" value="2" onclick="activeLink()">
+            <a href="#">2</a>
+          </li>
+          <li class="link" value="3" onclick="activeLink()">
+            <a href="#">3</a>
+          </li>
+          <li class="link" value="4" onclick="activeLink()">
+            <a href="#">4</a>
+          </li>
+          <li class="link" value="5" onclick="activeLink()">
+            <a href="#">5</a>
+          </li>
+          <li class="link" value="6" onclick="activeLink()">
+            <a href="#">6</a>
+          </li>
+        </ul>
+        <button class="btn2" onclick="nextBtn()">
+          <img src="448-arrow.png" />next
+        </button>
+      </div>
+    </div>
+    <script>
+      let link = document.getElementsByClassName("link");
+      let currentValue = 1;
+
+      function activeLink() {
+        for (let l of link) {
+          l.classList.remove("active");
+        }
+        event.target.parentNode.classList.add("active");
+        currentValue = event.target.parentNode.getAttribute("value");
+      }
+
+      function backBtn() {
+        if (currentValue > 1) {
+          for (let l of link) {
+            l.classList.remove("active");
+          }
+          currentValue--;
+          link[currentValue - 1].classList.add("active");
+        }
+      }
+
+      function nextBtn() {
+        if (currentValue < 6) {
+          for (let l of link) {
+            l.classList.remove("active");
+          }
+          currentValue++;
+          link[currentValue - 1].classList.add("active");
+        }
+      }
+    </script>
+  </body>
+</html>
